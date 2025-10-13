@@ -112,6 +112,78 @@
             "Proof of former Filipino citizenship",
             "Birth certificate",
             "Police clearance from country of residence"
+          ],
+          "steps": [
+            {
+              "title": "Check Eligibility",
+              "estimated_days": 1,
+              "items": [
+                "Applicant was previously a natural-born Filipino citizen.",
+                "Applicant is now a naturalized citizen of a foreign country.",
+                "Applicant intends to return to the Philippines for permanent residence.",
+                "No criminal record or derogatory immigration record.",
+                "Applicant must not have contagious or loathsome disease.",
+                "Applicant's financial capacity to support themselves."
+              ]
+            },
+            {
+              "title": "Prepare Required Documents",
+              "estimated_days": 7,
+              "items": [
+                "Duly accomplished Consolidated General Application Form (CGAF).",
+                "Valid foreign passport with at least 6 months validity.",
+                "Philippine Statistics Authority (PSA) birth certificate or Report of Birth.",
+                "Proof of loss of Philippine citizenship (e.g., naturalization certificate).",
+                "National Bureau of Investigation (NBI) clearance or police clearance from abroad.",
+                "Bank certificate or proof of financial capacity (optional but recommended).",
+                "Medical clearance from Bureau of Quarantine (if required).",
+                "Two 2\"x2\" ID photos with white background.",
+                "Notarized sworn statement of eligibility and intent to reside permanently."
+              ]
+            },
+            {
+              "title": "Submit Application and Pay Fees",
+              "estimated_days": 1,
+              "items": [
+                "Submit documents to the Philippine embassy/consulate or BI office if in the Philippines.",
+                "Get the Order of Payment Slip (OPS).",
+                "Pay applicable fees (Php 8,640 for principal applicant).",
+                "Submit copy of Official Receipt (OR)."
+              ]
+            },
+            {
+              "title": "Attend Hearing and Biometric Capture",
+              "estimated_days": 1,
+              "items": [
+                "Attend scheduled hearing as per Official Receipt instructions.",
+                "Undergo image and fingerprint capturing at Alien Registration Division (ARD)."
+              ]
+            },
+            {
+              "title": "Wait for Visa Approval",
+              "estimated_days": "30 to 90",
+              "items": [
+                "Processing time at the Bureau of Immigration.",
+                "Coordinate with relevant agencies (NBI, Interpol) for background check."
+              ]
+            },
+            {
+              "title": "Visa Issuance and ACR I-Card Claim",
+              "estimated_days": 1,
+              "items": [
+                "Upon approval, visa is stamped in foreign passport.",
+                "Report to Bureau of Immigration to claim Alien Certificate of Registration (ACR) I-Card."
+              ]
+            },
+            {
+              "title": "Entry and Registration",
+              "estimated_days": 60,
+              "items": [
+                "Enter the Philippines using the issued 13G visa.",
+                "Register with Bureau of Immigration within 60 days of arrival.",
+                "Renew ACR I-Card every 5 years thereafter."
+              ]
+            }
           ]
         },
         {

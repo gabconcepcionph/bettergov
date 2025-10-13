@@ -82,4 +82,70 @@ test.describe('Philippine visa types', () => {
 
     await expect(page.getByText('Important Notice')).toBeVisible();
   });
+
+  test('should render 13G visa detail directly', async ({ page }) => {
+    await page.goto('/travel/visa-types/13g');
+
+    await expect(
+      page.getByRole('heading', { name: 'Philippines Visa Types' })
+    ).toBeVisible();
+
+    await expect(
+      page.getByRole('heading', {
+        name: 'Returning Former Natural-Born Filipino Citizen (13G)',
+      })
+    ).toBeVisible();
+
+    await expect(
+      page.getByRole('heading', { name: 'Minimum Requirements' })
+    ).toBeVisible();
+
+    const requirements = page.locator('ul.list-disc li');
+    expect(await requirements.count()).toBeGreaterThan(0);
+    await expect(requirements.first()).toBeVisible();
+
+    const stepsHeading = page.locator('h3:has-text("Steps")');
+    await expect(stepsHeading.first()).toBeVisible();
+
+    const stepsCards = stepsHeading.locator(
+      'xpath=following-sibling::div//div[contains(@class, "bg-gray-50")]'
+    );
+    expect(await stepsCards.count()).toBeGreaterThan(0);
+    await expect(stepsCards.first()).toBeVisible();
+
+    await expect(page.getByText('Important Notice')).toBeVisible();
+  });
+
+  test('should render 13A visa detail directly', async ({ page }) => {
+    await page.goto('/travel/visa-types/13a');
+
+    await expect(
+      page.getByRole('heading', { name: 'Philippines Visa Types' })
+    ).toBeVisible();
+
+    await expect(
+      page.getByRole('heading', {
+        name: 'Immigrant Visa by Marriage (13A)',
+      })
+    ).toBeVisible();
+
+    await expect(
+      page.getByRole('heading', { name: 'Minimum Requirements' })
+    ).toBeVisible();
+
+    const requirements = page.locator('ul.list-disc li');
+    expect(await requirements.count()).toBeGreaterThan(0);
+    await expect(requirements.first()).toBeVisible();
+
+    const stepsHeading = page.locator('h3:has-text("Steps")');
+    await expect(stepsHeading.first()).toBeVisible();
+
+    const stepsCards = stepsHeading.locator(
+      'xpath=following-sibling::div//div[contains(@class, "bg-gray-50")]'
+    );
+    expect(await stepsCards.count()).toBeGreaterThan(0);
+    await expect(stepsCards.first()).toBeVisible();
+
+    await expect(page.getByText('Important Notice')).toBeVisible();
+  });
 });
