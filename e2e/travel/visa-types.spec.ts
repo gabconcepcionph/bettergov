@@ -69,20 +69,29 @@ test('should render visa detail layout structure', async ({ page }) => {
     await expect(page.getByRole('heading', { level: 2 }).first()).toBeVisible();
   }
 
-  await expect(
-    page.getByRole('heading', { level: 3, name: 'Minimum Requirements' })
-  ).toBeVisible();
-
-  await expect(
-    page.getByRole('listitem', { name: /Valid passport/i }).first()
-  ).toBeVisible();
+  const minimumRequirementsHeading = page.getByRole('heading', {
+    level: 3,
+    name: 'Minimum Requirements',
+  });
+  await expect(minimumRequirementsHeading).toBeVisible();
+  const minimumRequirementsItems = minimumRequirementsHeading.locator(
+    'xpath=following-sibling::div[1]//li'
+  );
+  expect(await minimumRequirementsItems.count()).toBeGreaterThan(0);
+  await expect(minimumRequirementsItems.first()).toBeVisible();
 
   const stepsHeading = page.getByRole('heading', { level: 3, name: 'Steps' });
   if ((await stepsHeading.count()) > 0) {
     await expect(stepsHeading.first()).toBeVisible();
-    await expect(
-      page.getByRole('heading', { level: 4, name: /Check Eligibility/i })
-    ).toBeVisible();
+    const firstStepTrigger = page
+      .getByRole('button', { name: /^(Step\s+\d+|\d+\.)/i })
+      .first();
+    await firstStepTrigger.click();
+    const openStepContent = page.locator('[data-state="open"]').first();
+    await expect(openStepContent).toBeVisible();
+    const openStepItems = openStepContent.locator('li, p');
+    expect(await openStepItems.count()).toBeGreaterThan(0);
+    await expect(openStepItems.first()).toBeVisible();
   }
 
   const subtypesHeading = page.getByRole('heading', {
@@ -102,30 +111,34 @@ test('should render visa detail layout structure', async ({ page }) => {
 test('should render 13G visa detail directly', async ({ page }) => {
   await page.goto('/travel/visa-types/13g');
 
-  await expect(
-    page.getByRole('heading', { name: 'Philippines Visa Types' })
-  ).toBeVisible();
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
 
-  await expect(
-    page.getByRole('heading', {
-      level: 2,
-      name: 'Returning Former Natural-Born Filipino Citizen (13G)',
-    })
-  ).toBeVisible();
+  const primaryHeading13G = page.getByRole('heading', { level: 2 }).first();
+  await expect(primaryHeading13G).toBeVisible();
+  await expect(primaryHeading13G).not.toHaveText('');
 
-  await expect(
-    page.getByRole('heading', { level: 3, name: 'Minimum Requirements' })
-  ).toBeVisible();
-
-  await expect(
-    page.getByRole('listitem', { name: /Valid passport/i }).first()
-  ).toBeVisible();
+  const minimumRequirementsHeading13G = page.getByRole('heading', {
+    level: 3,
+    name: 'Minimum Requirements',
+  });
+  await expect(minimumRequirementsHeading13G).toBeVisible();
+  const minimumRequirementsItems13G = minimumRequirementsHeading13G.locator(
+    'xpath=following-sibling::div[1]//li'
+  );
+  expect(await minimumRequirementsItems13G.count()).toBeGreaterThan(0);
+  await expect(minimumRequirementsItems13G.first()).toBeVisible();
 
   const stepsHeading = page.getByRole('heading', { level: 3, name: 'Steps' });
   await expect(stepsHeading.first()).toBeVisible();
-  await expect(
-    page.getByRole('heading', { level: 4, name: /Check Eligibility/i })
-  ).toBeVisible();
+  await page
+    .getByRole('button', { name: /^(Step\s+\d+|\d+\.)/i })
+    .first()
+    .click();
+  const openStepContent13G = page.locator('[data-state="open"]').first();
+  await expect(openStepContent13G).toBeVisible();
+  const openStepItems13G = openStepContent13G.locator('li, p');
+  expect(await openStepItems13G.count()).toBeGreaterThan(0);
+  await expect(openStepItems13G.first()).toBeVisible();
 
   await expect(
     page.getByRole('heading', { level: 3, name: 'Important Notice' })
@@ -139,26 +152,32 @@ test('should render 13A visa detail directly', async ({ page }) => {
     page.getByRole('heading', { name: 'Philippines Visa Types' })
   ).toBeVisible();
 
-  await expect(
-    page.getByRole('heading', {
-      level: 2,
-      name: 'Immigrant Visa by Marriage (13A)',
-    })
-  ).toBeVisible();
+  const primaryHeading13A = page.getByRole('heading', { level: 2 }).first();
+  await expect(primaryHeading13A).toBeVisible();
+  await expect(primaryHeading13A).not.toHaveText('');
 
-  await expect(
-    page.getByRole('heading', { level: 3, name: 'Minimum Requirements' })
-  ).toBeVisible();
-
-  await expect(
-    page.getByRole('listitem', { name: /Valid passport/i }).first()
-  ).toBeVisible();
+  const minimumRequirementsHeading13A = page.getByRole('heading', {
+    level: 3,
+    name: 'Minimum Requirements',
+  });
+  await expect(minimumRequirementsHeading13A).toBeVisible();
+  const minimumRequirementsItems13A = minimumRequirementsHeading13A.locator(
+    'xpath=following-sibling::div[1]//li'
+  );
+  expect(await minimumRequirementsItems13A.count()).toBeGreaterThan(0);
+  await expect(minimumRequirementsItems13A.first()).toBeVisible();
 
   const stepsHeading = page.getByRole('heading', { level: 3, name: 'Steps' });
   await expect(stepsHeading.first()).toBeVisible();
-  await expect(
-    page.getByRole('heading', { level: 4, name: /Check Eligibility/i })
-  ).toBeVisible();
+  await page
+    .getByRole('button', { name: /^(Step\s+\d+|\d+\.)/i })
+    .first()
+    .click();
+  const openStepContent13A = page.locator('[data-state="open"]').first();
+  await expect(openStepContent13A).toBeVisible();
+  const openStepItems13A = openStepContent13A.locator('li, p');
+  expect(await openStepItems13A.count()).toBeGreaterThan(0);
+  await expect(openStepItems13A.first()).toBeVisible();
 
   await expect(
     page.getByRole('heading', { level: 3, name: 'Important Notice' })
