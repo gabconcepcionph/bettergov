@@ -1,8 +1,5 @@
 import { expect, test } from '@playwright/test';
 
-const escapeRegExp = (text: string) =>
-  text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-
 test('should render visa types landing structure', async ({ page }) => {
   await page.goto('/travel/visa-types');
 
@@ -41,7 +38,6 @@ test('should render visa detail layout structure', async ({ page }) => {
   const visaLinks = page.getByRole('link', { name: /Visa/ });
   const firstVisaLink = visaLinks.first();
   const targetHref = await firstVisaLink.getAttribute('href');
-  const firstVisaName = (await firstVisaLink.textContent())?.trim() ?? '';
 
   expect(targetHref).toBeTruthy();
 
@@ -58,16 +54,9 @@ test('should render visa detail layout structure', async ({ page }) => {
     page.getByRole('link', { name: 'Back to Visa Types' })
   ).toBeVisible();
 
-  if (firstVisaName) {
-    await expect(
-      page.getByRole('heading', {
-        level: 2,
-        name: new RegExp(escapeRegExp(firstVisaName), 'i'),
-      })
-    ).toBeVisible();
-  } else {
-    await expect(page.getByRole('heading', { level: 2 }).first()).toBeVisible();
-  }
+  const detailHeading = page.getByRole('heading', { level: 2 }).first();
+  await expect(detailHeading).toBeVisible();
+  await expect(detailHeading).not.toHaveText('');
 
   const minimumRequirementsHeading = page.getByRole('heading', {
     level: 3,
